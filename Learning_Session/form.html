@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        border: 1px solid black;
+        margin: 50px auto;
+        width: 600px;
+        padding: 20px;
+        background-color: rgb(207, 241, 173);
+      }
+      .container h1{
+        color: blueviolet;
+      }
+      label {
+        display: block;
+        margin-top: 20px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      input[type="date"] {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+        
+      }
+      input[type="submit"] {
+        display:block;
+        width: 100px;
+        margin: 20px auto;
+        cursor: pointer;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="text-align: center">
+        <u><i>Student Registration Form</i></u>
+      </h1>
+      <form>
+        <label>First name :</label>
+        <input type="text" name="fname" /><br />
+
+        <label>Last name :</label>
+        <input type="text" name="lname" /><br />
+
+        <label>DOB:</label>
+        <input type="date" name="dob" /><br />
+
+        <label>Gender:</label>
+        <input type="radio" value="Female" name="gender" /> Male
+        <input type="radio" value="male" name="gender" /> Female
+        <input type="radio" value="Other" name="gender" />Other
+        <br />
+        <input type="submit" />
+      </form>
+    </div>
+  </body>
+</html>

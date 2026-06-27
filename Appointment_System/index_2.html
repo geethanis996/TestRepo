@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Appointment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./styles/style.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <header>
+      <div class="mainheading">
+        <img src="../images/logo.jpg" class="logo" />
+        <h1>REMEDIC</h1>
+      </div>
+      <div class="menubar">
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="">About Us</a></li>
+          <li><a href="">Services</a></li>
+          <li><a href="">Blog</a></li>
+          <li><a href="">Contact Us</a></li>
+          <li><a href="index_2.html"><button>Make an Appointment</button></a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ✅ phone-wrapper added here — this is what centers the card -->
+    <div class="phone-wrapper">
+      <div class="phone">
+        <div class="screen">
+
+          <!-- STEPPER -->
+          <div class="stepper">
+            <div class="stepper-item">
+              <div class="step-circle active" id="circle-1" onclick="goToStep(1)">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="stepper-item">
+              <div class="step-circle" id="circle-2" onclick="goToStep(2)">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="stepper-item">
+              <div class="step-circle" id="circle-3" onclick="goToStep(3)">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="stepper-item">
+              <div class="step-circle" id="circle-4" onclick="goToStep(4)">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="stepper-item">
+              <div class="step-circle" id="circle-5" onclick="goToStep(5)">5</div>
+            </div>
+          </div>
+
+          <!-- STEP 1 — SELECT SERVICE -->
+          <div class="step-panel active" id="panel-1">
+            <div class="page-title">
+              <h2>Select services</h2>
+              <p>Choose the type of service you need</p>
+            </div>
+            <div class="item-card" onclick="selectCard(this,'service','Consultation')">
+              <img src="https://cdn-icons-png.flaticon.com/512/2785/2785819.png" alt="Consultation" />
+              <div><p class="card-title">Consultation</p></div>
+            </div>
+            <div class="item-card" onclick="selectCard(this,'service','Procedure')">
+              <img src="https://cdn-icons-png.flaticon.com/512/2966/2966327.png" alt="Procedure" />
+              <div><p class="card-title">Procedure</p></div>
+            </div>
+            <div class="item-card" onclick="selectCard(this,'service','Pharmacy')">
+              <img src="https://cdn-icons-png.flaticon.com/512/2037/2037832.png" alt="Pharmacy" />
+              <div><p class="card-title">Pharmacy</p></div>
+            </div>
+            <div class="btn-area single">
+              <button class="btn-action" style="max-width:180px" onclick="goToStep(2)">Continue</button>
+            </div>
+          </div>
+
+          <!-- STEP 2 — SELECT DOCTOR -->
+          <div class="step-panel" id="panel-2">
+            <div class="page-title">
+              <h2>Select Doctor</h2>
+              <p>Choose your preferred doctor</p>
+            </div>
+            <div class="item-card" onclick="selectCard(this,'doctor','Dr. Sarah Lee')">
+              <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Doctor" />
+              <div>
+                <p class="card-title">Dr. Sarah Lee</p>
+                <p class="card-sub">General Physician</p>
+              </div>
+            </div>
+            <div class="item-card" onclick="selectCard(this,'doctor','Dr. James Tan')">
+              <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Doctor" />
+              <div>
+                <p class="card-title">Dr. James Tan</p>
+                <p class="card-sub">Cardiologist</p>
+              </div>
+            </div>
+            <div class="item-card" onclick="selectCard(this,'doctor','Dr. Priya Kumar')">
+              <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="Doctor" />
+              <div>
+                <p class="card-title">Dr. Priya Kumar</p>
+                <p class="card-sub">Neurologist</p>
+              </div>
+            </div>
+            <div class="btn-area">
+              <button class="btn-action" onclick="goToStep(1)">Back</button>
+              <button class="btn-action" onclick="goToStep(3)">Continue</button>
+            </div>
+          </div>
+
+          <!-- STEP 3 — SELECT DATE & TIME -->
+          <div class="step-panel" id="panel-3">
+            <div class="page-title">
+              <h2>Select Date &amp; Time</h2>
+              <p>Pick your preferred appointment slot</p>
+            </div>
+            <div style="margin-bottom:14px">
+              <label style="font-weight:700;font-size:13px;display:block;margin-bottom:6px;color:#333">Date</label>
+              <input type="date" id="appt-date" class="form-control"
+                style="border-radius:8px;border:1px solid #aaa;padding:10px 14px;font-size:14px"
+                oninput="saveDateTime()" />
+            </div>
+            <div style="margin-bottom:14px">
+              <label style="font-weight:700;font-size:13px;display:block;margin-bottom:6px;color:#333">Time</label>
+              <input type="time" id="appt-time" class="form-control"
+                style="border-radius:8px;border:1px solid #aaa;padding:10px 14px;font-size:14px"
+                oninput="saveDateTime()" />
+            </div>
+            <div class="btn-area">
+              <button class="btn-action" onclick="goToStep(2)">Back</button>
+              <button class="btn-action" onclick="goToStep(4)">Continue</button>
+            </div>
+          </div>
+
+          <!-- STEP 4 — PATIENT DETAILS -->
+          <div class="step-panel" id="panel-4">
+            <div class="page-title">
+              <h2>Patient Details</h2>
+              <p>Enter the patient information</p>
+            </div>
+            <div style="margin-bottom:14px">
+              <label style="font-weight:700;font-size:13px;display:block;margin-bottom:6px;color:#333">Patient Name</label>
+              <input type="text" id="patient-name" placeholder="e.g. Mr Siva" class="form-control"
+                style="border-radius:8px;border:1px solid #aaa;padding:10px 14px;font-size:14px"
+                oninput="savePatient()" />
+            </div>
+            <div style="margin-bottom:14px">
+              <label style="font-weight:700;font-size:13px;display:block;margin-bottom:6px;color:#333">Consultation Fee (LKR)</label>
+              <input type="number" id="patient-fee" placeholder="e.g. 4000" class="form-control"
+                style="border-radius:8px;border:1px solid #aaa;padding:10px 14px;font-size:14px"
+                oninput="savePatient()" />
+            </div>
+            <div class="btn-area">
+              <button class="btn-action" onclick="goToStep(3)">Back</button>
+              <button class="btn-action" onclick="goToStep(5)">Continue</button>
+            </div>
+          </div>
+
+          <!-- STEP 5 — CONFIRMATION -->
+          <div class="step-panel" id="panel-5">
+            <div class="page-title">
+              <h2>Confirmation</h2>
+              <p>Review your appointment details</p>
+            </div>
+            <div class="confirm-row">
+              <span class="lbl">Service</span>
+              <span class="val" id="conf-service">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="lbl">Doctor</span>
+              <span class="val" id="conf-doctor">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="lbl">Date &amp; Time</span>
+              <span class="val" id="conf-datetime">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="lbl">Patient Name</span>
+              <span class="val" id="conf-patient">—</span>
+            </div>
+            <div class="confirm-row">
+              <span class="lbl">Fee</span>
+              <span class="val" id="conf-fee">—</span>
+            </div>
+            <div class="btn-area">
+              <button class="btn-action" onclick="goToStep(4)">Back</button>
+              <button class="btn-action" style="background:#27ae60" onclick="confirmBooking()">Confirm</button>
+            </div>
+          </div>
+
+        </div><!-- /screen -->
+      </div><!-- /phone -->
+    </div><!-- /phone-wrapper ✅ -->
+
+    <footer>
+      <div>&copy;REMEDIC Central Hospital Pvt LTD</div>
+    </footer>
+
+    <script>
+      const state = { service:"", doctor:"", date:"", time:"", patient:"", fee:"" };
+      let currentStep = 1;
+
+      function goToStep(n) {
+        document.querySelectorAll(".step-panel").forEach(p => p.classList.remove("active"));
+        document.getElementById("panel-" + n).classList.add("active");
+        document.querySelectorAll(".step-circle").forEach((c, i) => {
+          c.classList.toggle("active", i + 1 === n);
+        });
+        currentStep = n;
+        if (n === 5) fillConfirmation();
+      }
+
+      function selectCard(el, key, value) {
+        el.closest(".step-panel").querySelectorAll(".item-card").forEach(c => c.classList.remove("selected"));
+        el.classList.add("selected");
+        state[key] = value;
+      }
+
+      function saveDateTime() {
+        state.date = document.getElementById("appt-date").value;
+        state.time = document.getElementById("appt-time").value;
+      }
+
+      function savePatient() {
+        state.patient = document.getElementById("patient-name").value;
+        state.fee     = document.getElementById("patient-fee").value;
+      }
+
+      function fillConfirmation() {
+        document.getElementById("conf-service").textContent  = state.service  || "—";
+        document.getElementById("conf-doctor").textContent   = state.doctor   || "—";
+        const d = state.date
+          ? new Date(state.date).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})
+          : "—";
+        document.getElementById("conf-datetime").textContent = state.time ? `${d}, ${state.time}` : d;
+        document.getElementById("conf-patient").textContent  = state.patient  || "—";
+        document.getElementById("conf-fee").textContent      = state.fee
+          ? `LKR ${parseFloat(state.fee).toFixed(2)}`
+          : "—";
+      }
+
+      function confirmBooking() {
+        alert("✅ Appointment confirmed!\n\nService: " + (state.service||"—") +
+              "\nDoctor: "  + (state.doctor||"—") +
+              "\nDate: "    + (state.date||"—") +
+              "\nPatient: " + (state.patient||"—"));
+      }
+    </script>
+  </body>
+</html>

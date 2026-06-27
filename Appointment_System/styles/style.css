@@ -1,0 +1,427 @@
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Single, authoritative body rule — column stack so
+   header / main / footer each take their natural width */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;          /* ← stack vertically */
+  background: #eef2f7;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER  (full width)
+═══════════════════════════════════════════ */
+header {
+  width: 100%;                     /* ← full width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.mainheading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mainheading h1 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a6fa8;
+}
+
+.logo {
+  height: 50px;
+  width: 70px;
+  object-fit: contain;
+}
+
+.menubar {
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.menu li a:hover {
+  color: #1e88e5;
+}
+
+.menu li a button {
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(107, 112, 218);
+  padding: 10px 18px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu li a button:hover {
+  background-color: cadetblue;
+  color: #000;
+}
+
+/* ═══════════════════════════════════════════
+   MAIN BODY / HERO
+═══════════════════════════════════════════ */
+.mainbody {
+  background-image: url(../../images/main.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 830px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainbody div h1 {
+  color: rgb(35, 71, 110);
+  display: flex;
+  justify-content: center;
+  font-size: 54px;
+  text-shadow: 20px 20px 100px rgba(0,0,0,0.4);
+}
+
+.mainbody div p {
+  color: rgb(243, 244, 246);
+  text-align: center;
+  font-size: 24px;
+}
+
+/* ═══════════════════════════════════════════
+   PHONE WRAPPER  (centered content area)
+═══════════════════════════════════════════ */
+.phone-wrapper {
+  flex: 1;                         /* ← takes all space between header & footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ── PHONE SHELL ── */
+.phone {
+  width: 420px;
+  min-height: 700px;
+  background: #f0f4f8;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* faint background texture overlay */
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=20') center/cover no-repeat;
+  opacity: .08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.screen {
+  position: relative;
+  z-index: 1;
+  padding: 32px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ═══════════════════════════════════════════
+   STEPPER
+═══════════════════════════════════════════ */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.stepper-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.stepper-item:last-child { flex: none; }
+
+.step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #d6d8db;
+  color: #666;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .25s, color .25s, transform .2s;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.step-circle:hover {
+  transform: scale(1.08);
+}
+
+.step-circle.active {
+  background: #c47a5c;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(196,122,92,.4);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #b0b4b8;
+  margin: 0 4px;
+}
+
+/* ═══════════════════════════════════════════
+   PAGE TITLE
+═══════════════════════════════════════════ */
+.page-title h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 2px;
+  color: #111;
+}
+
+.page-title p {
+  font-size: 13px;
+  color: #555;
+  margin: 0 0 20px;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICE / DOCTOR CARDS
+═══════════════════════════════════════════ */
+.item-card {
+  background: #dee2e6;
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background .2s, border .2s, transform .15s;
+  border: 2px solid transparent;
+}
+
+.item-card:hover {
+  transform: scale(1.01);
+  background: #d0d4d8;
+}
+
+.item-card.selected {
+  border-color: #1e88e5;
+  background: #d6e9ff;
+}
+
+.item-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.item-card .card-title {
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin: 0;
+  color: #111;
+}
+
+.item-card .card-sub {
+  font-size: 12px;
+  color: #555;
+  margin: 2px 0 0;
+}
+
+/* ═══════════════════════════════════════════
+   DATE & TIME STEP
+═══════════════════════════════════════════ */
+.datetime-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.dt-icon {
+  width: 130px;
+  height: 130px;
+  opacity: .85;
+}
+
+/* ═══════════════════════════════════════════
+   CONFIRMATION STEP
+═══════════════════════════════════════════ */
+.confirm-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.confirm-row .lbl {
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  width: 130px;
+  flex-shrink: 0;
+  color: #111;
+}
+
+.confirm-row .val {
+  flex: 1;
+  background: #dee2e6;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.btn-area.single { justify-content: flex-end; }
+
+.btn-action {
+  background: #1e88e5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.btn-action:hover { background: #1565c0; }
+
+/* ── step panels ── */
+.step-panel {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+.step-panel.active { display: flex; }
+
+/* ═══════════════════════════════════════════
+   FOOTER  (full width)
+═══════════════════════════════════════════ */
+footer {
+  width: 100%;                     /* ← full width */
+  margin-top: auto;                /* ← pushed to bottom */
+}
+
+footer div {
+  background-color: rgb(73, 73, 108);
+  text-align: center;
+  padding: 14px;
+  color: aliceblue;
+  font-size: 13px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+
+  .menubar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mainbody {
+    height: 500px;
+  }
+
+  .mainbody div h1 {
+    font-size: 34px;
+  }
+
+  .mainbody div p {
+    font-size: 22px;
+  }
+
+  .phone {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .phone-wrapper {
+    padding: 20px 12px;
+  }
+}
